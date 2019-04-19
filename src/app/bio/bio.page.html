@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>bio</ion-title>
+  </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button checked value="plant">
+      <ion-label>พืช</ion-label>
+      <ion-icon name="leaf"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="animal">
+      <ion-label>สัตว์</ion-label>
+      <ion-icon name="paw"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  
+  <router-outlet></router-outlet>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button strong size="large" expand="full" color="success" (click)="presentModal(1)">
+          <ion-icon slot="icon-only" name="leaf"></ion-icon>&nbsp;
+          <h1>พืช</h1>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button strong size="large" expand="full" color="tertiary" (click)="presentModal(2)">
+          <ion-icon slot="icon-only" name="paw"></ion-icon>&nbsp;
+          <h1>สัตว์</h1>          
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>   -->
+</ion-content>

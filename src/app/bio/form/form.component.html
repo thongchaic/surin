@@ -1,0 +1,42 @@
+<ion-content [formGroup]="bioForm">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-button color="secondary" (click)="takePhoto()">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        ถ่ายรูป
+      </ion-button>
+      <ion-button color="tertiary" (click)="selectPhoto()">
+        <ion-icon slot="start" name="images"></ion-icon>
+        เลือกจากอัลบั้ม
+      </ion-button>          
+    </ion-row>
+  </ion-grid>
+  <ion-img [src]="imageSrc"></ion-img>
+  <ion-item>
+    <ion-label position="floating">ตำแหน่งที่พบ</ion-label>
+    <div id="map_canvas" style="width: 100%; height: 400px;"></div>
+    <ion-input readonly type="text" [value]="lat+','+lng"></ion-input>
+    <!-- <ion-grid>
+      <ion-row justify-content-between>
+        <ion-input readonly type="text" formControlName="coordinates"></ion-input>
+        <ion-button color="secondary" routerDirection="forward" routerLink="/gmap">
+          <ion-icon slot="start" name="pin"></ion-icon>
+          ปักหมุด
+        </ion-button>
+      </ion-row>
+    </ion-grid> -->
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ส่วนของ{{ typeTitle }}</ion-label>
+    <ion-input type="text" formControlName="plant_organs"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ชื่อ{{ typeTitle }}</ion-label>
+    <ion-input type="text" formControlName="plant_name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ผู้ให้ข้อมูล (ไม่ระบุก็ได้)</ion-label>
+    <ion-textarea formControlName="informant"></ion-textarea>
+  </ion-item>
+  <ion-button type="submit" expand="full" color="success" (click)="submit()">บันทึก</ion-button>
+</ion-content>

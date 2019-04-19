@@ -4,17 +4,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'bio',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  }
+  // { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  // { path: 'list', loadChildren: './list/list.module#ListPageModule' },
+  { path: 'bio', loadChildren: './bio/bio.module#BioPageModule' },
+  { path: 'gmap', loadChildren: './gmap/gmap.module#GmapPageModule' }
 ];
 
 @NgModule({
