@@ -11,28 +11,25 @@
       </ion-button>          
     </ion-row>
   </ion-grid>
-  <ion-img [src]="imageSrc"></ion-img>
-  <ion-item>
+  <ion-img [src]="imageSrc || 'assets/noimg.png'"></ion-img>
+  <ion-item lines="none">
     <ion-label position="floating">ตำแหน่งที่พบ</ion-label>
     <div id="map_canvas" style="width: 100%; height: 400px;"></div>
-    <ion-input readonly type="text" [value]="lat+','+lng"></ion-input>
-    <!-- <ion-grid>
-      <ion-row justify-content-between>
-        <ion-input readonly type="text" formControlName="coordinates"></ion-input>
-        <ion-button color="secondary" routerDirection="forward" routerLink="/gmap">
-          <ion-icon slot="start" name="pin"></ion-icon>
-          ปักหมุด
-        </ion-button>
-      </ion-row>
-    </ion-grid> -->
+    <ion-text>{{ lat+','+lng }}</ion-text>
   </ion-item>
   <ion-item>
     <ion-label position="floating">ส่วนของ{{ typeTitle }}</ion-label>
-    <ion-input type="text" formControlName="plant_organs"></ion-input>
+    <ion-select formControlName="organs">
+      <ion-select-option 
+        *ngFor="let organ of organs" 
+        [value]="organ.id">
+        {{ organ.name_th }}
+      </ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="floating">ชื่อ{{ typeTitle }}</ion-label>
-    <ion-input type="text" formControlName="plant_name"></ion-input>
+    <ion-input type="text" formControlName="name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">ผู้ให้ข้อมูล (ไม่ระบุก็ได้)</ion-label>

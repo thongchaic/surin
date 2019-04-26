@@ -11,5 +11,8 @@
 </ion-header> -->
 
 <ion-content>
-  <app-form [formType]="formType"></app-form>
+  <app-form 
+  [formType]="formType" 
+  [organs]="organs" 
+  (submitChange)="submit($event)"></app-form>
 </ion-content>

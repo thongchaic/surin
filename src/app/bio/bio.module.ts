@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -15,6 +16,9 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { File } from '@ionic-native/file/ngx';
+
+import { BioService } from './shared/bio.service';
+
 
 const routes: Routes = [
   {
@@ -40,6 +44,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
   entryComponents: [
@@ -53,6 +58,7 @@ const routes: Routes = [
     FormComponent
   ],
   providers: [
+    BioService,
     Camera,
     ImagePicker,
     FileTransfer,

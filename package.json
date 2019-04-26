@@ -91,14 +91,14 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-filepath": {},
       "cordova-plugin-file-transfer": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-file": {},
       "cordova-plugin-googlemaps": {
         "API_KEY_FOR_ANDROID": "AIzaSyBo6IQqJVSTfjZAL5mJwTQTGJEgwT0_l1A",
         "API_KEY_FOR_IOS": "AIzaSyBo6IQqJVSTfjZAL5mJwTQTGJEgwT0_l1A",
         "PLAY_SERVICES_VERSION": "15.0.1",
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
-      },
-      "cordova-plugin-geolocation": {},
-      "cordova-plugin-file": {}
+      }
     },
     "platforms": [
       "android",

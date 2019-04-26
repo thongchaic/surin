@@ -11,6 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
+      title: 'หน้าแรก',
+      url: '/home',
+      icon: 'home'
+    },
+    {
       title: 'นำเข้าข้อมูล',
       url: '/bio',
       icon: 'cloud-upload'

@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  GoogleMaps,
-  GoogleMap,
-  Environment
-} from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { BioService } from '../shared/bio.service';
+import { Platform, ToastController, NavController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal',
@@ -13,37 +10,50 @@ import { Platform } from '@ionic/angular';
 })
 export class AnimalComponent implements OnInit {
 
-  map: GoogleMap;
-
+  formType = 'ANIMAL';
+  organs: any;
+  
   constructor(
-    private platform: Platform,
+    private bioService: BioService,
+    private toast: ToastController,
+    private loading: LoadingController,
+    private navCtrl: NavController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.bioService.getOrgans(2).subscribe(data => this.organs = data);
+  }
 
-  ionViewDidLoad() {
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyA4ftkZaeFPuzyWhzztN7kX7VpBxfAMvsI',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyA4ftkZaeFPuzyWhzztN7kX7VpBxfAMvsI'
+  submit(form) {
+    this.bioService.create(form, 2).subscribe(res => {
+
+      this.presentLoading();
+
+    }, err => {
+      this.presentToast('นำเข้าข้อมูลไม่สำเร็จ กรุณาตรวจข้อมูลอีกครั้ง');
     });
   }
 
-  async ionViewDidEnter() {      
-    await this.platform.ready();
-    await this.loadMap();  
+  async presentToast(msg) {
+    const toast = await this.toast.create({
+      message: msg,
+      position: 'top',
+      duration: 1000
+    });
+    toast.present();
   }
 
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {
-          lat: 43.0741704,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
+  async presentLoading() {
+    const loading = await this.loading.create({
+      message: '',
+      duration: 2000,
+      spinner: 'circles'
     });
-  } 
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    this.navCtrl.navigateRoot('/home');
+    this.presentToast('นำเข้าข้อมูลเรียบร้อยแล้ว');
+  }
 
 }

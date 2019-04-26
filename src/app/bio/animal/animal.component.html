@@ -1,12 +1,6 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button color="primary" (click)="closeModal()">
-        <ion-icon name="arrow-back"></ion-icon>
-        กลับ        
-      </ion-button>
-    </ion-buttons>
-    <ion-title>นำเข้าข้อมูลสัตว์</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-<div id="map_canvas" style="width: 100%; height: 100%;"></div>
+<ion-content>
+  <app-form 
+  [formType]="formType" 
+  [organs]="organs" 
+  (submitChange)="submit($event)"></app-form>
+</ion-content>
